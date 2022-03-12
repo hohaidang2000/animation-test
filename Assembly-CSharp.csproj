@@ -57,7 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\animation resource\animationcontroller.cs" />
-    <Compile Include="Assets\playerinput.cs" />
+    <Compile Include="Assets\PlayerInput.cs" />
+    <Compile Include="Assets\AnimationAndMovementController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
