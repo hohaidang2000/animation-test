@@ -59,6 +59,7 @@
     <Compile Include="Assets\animation resource\animationcontroller.cs" />
     <Compile Include="Assets\PlayerInput.cs" />
     <Compile Include="Assets\AnimationAndMovementController.cs" />
+    <Compile Include="Assets\spawnsequence.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
