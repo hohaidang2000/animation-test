@@ -619,6 +619,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ed80493c770f0469e29219ed2f42ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  box1: {fileID: 7120611201035208320, guid: d8438b710eac91343b63056fbed0f426, type: 3}
+  box2: {fileID: 4045147815945107029, guid: 090daba87027e7f47b377285eb874f7e, type: 3}
 --- !u!4 &778837305
 Transform:
   m_ObjectHideFlags: 0
@@ -1149,7 +1151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193475634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -2, z: 2}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1421,7 +1423,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18032
+  m_Name: pb_Mesh18058
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
