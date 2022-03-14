@@ -15,14 +15,18 @@ public class SpawnSequence : MonoBehaviour
         int x = 0;
         int z = 0;
         int count = 0;
-        for (int i = 20; i<= 100; i += 20)
+        for (int i = 10; i<= 1000; i += 20)
         {
-            for(int j = 20; j <=100; j+= 20)
-            {   if (count < 500)
+            for(int j = 10; j <=1000; j+= 20)
+            {   if(i == 10 && j == 10)
+                {
+                    continue;
+                }
+                if (count < 2500)
                 {
                     num = Random.Range(0, 2);
-                    x = Random.Range(i - 10, i);
-                    z = Random.Range(j - 10, j);
+                    x = Random.Range(i - 8, i-2);
+                    z = Random.Range(j - 8, j - 2);
                     if (num == 0)
                     {
                         Instantiate(box1, new Vector3(x, 0, -z), Quaternion.identity);

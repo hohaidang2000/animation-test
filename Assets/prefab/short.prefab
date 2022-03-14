@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7649364708903772271}
   - component: {fileID: 6782584888961542000}
   - component: {fileID: 9186041500673436299}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: short
   m_TagString: forward
   m_Icon: {fileID: 0}
@@ -310,6 +310,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
