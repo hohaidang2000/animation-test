@@ -4,11 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-    public gameoverscreen GameOverScreen;
-    public gameoverscreen GameOverScreen2;
+    public GameOverScreen GameOverScreen;
+    public GameOverScreen GameOverScreen2;
     // Start is called before the first frame update
     bool gameHasEnded = false;
-   public void EndGame()
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
+    public void EndGame()
     {
        
             Cursor.lockState = CursorLockMode.None;

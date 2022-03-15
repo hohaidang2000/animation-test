@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gameoverscreen : MonoBehaviour
+public class GameOverScreen : MonoBehaviour
 {
     public void Setup()
     {

@@ -59,11 +59,13 @@
     <Compile Include="Assets\scipt\SpawnSequence.cs" />
     <Compile Include="Assets\animation resource\animationcontroller.cs" />
     <Compile Include="Assets\scipt\PlayerInput.cs" />
-    <Compile Include="Assets\scipt\AnimationAndMovementController.cs" />
-    <Compile Include="Assets\scipt\GameManager.cs" />
-    <Compile Include="Assets\scipt\mainmenu.cs" />
-    <Compile Include="Assets\scipt\gameoverscreen.cs" />
     <Compile Include="Assets\scipt\onoff.cs" />
+    <Compile Include="Assets\scipt\mainmenu.cs" />
+    <Compile Include="Assets\scipt\AnimationAndMovementController.cs" />
+    <Compile Include="Assets\scipt\GameOverScreen.cs" />
+    <Compile Include="Assets\scipt\GameManager.cs" />
+    <Compile Include="Assets\scipt\ModelTurning.cs" />
+    <Compile Include="Assets\CameraFollow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

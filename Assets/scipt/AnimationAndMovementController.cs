@@ -40,23 +40,31 @@ public class AnimationAndMovementController : MonoBehaviour
     public float currentReach;
     public GameManager gameManager;
     public float dragFactor = 5f;
-
+    bool flagstandup = true;
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         ostacle = hit.collider.gameObject;
-        if (hit.collider.gameObject.tag == "forward")
+        if (flagstandup)
         {
-            forward = true;
-            handleAnimation();
-            
-            Debug.Log("forward");
-        }
-        if (hit.collider.gameObject.tag == "back")
-        {
-            backward = true;
-            Debug.Log("backward");
-        }
+            if (hit.collider.gameObject.tag == "forward")
+            {
+                forward = true;
+                Vector3 direction = new Vector3(currentMovementInput.x, 0f, currentMovementInput.y).normalized;
+                transform.rotation = Quaternion.LookRotation(direction);
+                handleAnimation();
 
+                Debug.Log("forward");
+            }
+            if (hit.collider.gameObject.tag == "back")
+            {
+                backward = true;
+                Vector3 direction = new Vector3(currentMovementInput.x, 0f, currentMovementInput.y).normalized;
+                transform.rotation = Quaternion.LookRotation(direction);
+                Debug.Log("backward");
+            }
+            Debug.Log(flagstandup);
+            
+        }
 
     }
 
@@ -89,6 +97,7 @@ public class AnimationAndMovementController : MonoBehaviour
         if (isMovementPressed)
         {
             animator.SetBool("isPressing", true);
+            flagstandup = true;
             Debug.Log("Press");
             
             //animator.Play("New Animation");
@@ -96,6 +105,11 @@ public class AnimationAndMovementController : MonoBehaviour
         else
         {
             animator.SetBool("isPressing", false);
+        }
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("falling_backward") && !animator.GetCurrentAnimatorStateInfo(0).IsName("falling_forward"))
+        {
+            Vector3 direction = new Vector3(0, 0f, 1).normalized;
+            transform.rotation = Quaternion.LookRotation(direction);
         }
         //Debug.Log(context.ReadValue<Vector2>());
     }
@@ -106,6 +120,7 @@ public class AnimationAndMovementController : MonoBehaviour
     {
 
     }
+
     void handleAnimation()
     {
 
@@ -114,7 +129,7 @@ public class AnimationAndMovementController : MonoBehaviour
         animator.SetBool("forward", false);
         animator.SetBool("backward", false);
         if (isMovingLeft == true)
-        {
+        {   
             animator.SetBool(nameof(isMovingLeft), true);
         }
         if (isMovingLeft == false)
@@ -170,7 +185,8 @@ public class AnimationAndMovementController : MonoBehaviour
         {
 
             //animator.SetBool("backward", true);
-            
+            backward = false;
+            flagstandup = false;
             animator.Play("falling_backward");
             animator.Play("standingup");
             //fallflag = true;
@@ -178,17 +194,14 @@ public class AnimationAndMovementController : MonoBehaviour
         if (forward == true )
         {
             //animator.SetBool("forward", true);
-            
+            forward = false;
+            flagstandup = false;
             animator.Play("falling_forward");
             animator.Play("standingup");
             //fallflag = true;
         }
         forward = false;
         backward = false;
-
-
-
-
 
     }
     void Update()
@@ -233,14 +246,19 @@ public class AnimationAndMovementController : MonoBehaviour
         
 
         characterController.Move(currentMovement*Time.deltaTime*10f);
+
+        //transform.Rotate(Vector3.up, 20 * Time.deltaTime);
     }
     void OnEnable()
     {
         playerInput.CharacterControl.Enable();
+        
+
     }
     void OnDisable()
     {
         playerInput.CharacterControl.Disable();
+
     }
 
 }
