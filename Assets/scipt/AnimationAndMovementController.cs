@@ -74,6 +74,11 @@ public class AnimationAndMovementController : MonoBehaviour
             //Debug.Log(flagstandup);
             
         }
+        else
+        {
+           
+         
+        }
 
     }
 
@@ -144,12 +149,21 @@ public class AnimationAndMovementController : MonoBehaviour
         animator.SetBool("backward", false);
         if (isMovingLeft == true)
         {
-            acceleration += acceleration * Time.deltaTime;
-            if (acceleration > 20)
+            animator.SetBool("isPressing", true);
+            if (isMoving)
             {
-                acceleration = 20;
-                animator.SetBool("isRunning", true);
+                acceleration += acceleration * Time.deltaTime;
+                if (acceleration > 20)
+                {
+                    acceleration = 20;
+                    animator.SetBool("isRunning", true);
 
+                }
+            }
+            else
+            {
+                acceleration = orginalAceleration;
+                animator.SetBool("isRunning",false);
             }
             animator.SetBool(nameof(isMovingLeft), true);
         }
@@ -159,12 +173,21 @@ public class AnimationAndMovementController : MonoBehaviour
         }
         if (isMovingRight == true)
         {
-            acceleration += acceleration * Time.deltaTime;
-            if (acceleration > 20)
+            animator.SetBool("isPressing", true);
+            if (isMoving)
             {
-                acceleration = 20;
-                animator.SetBool("isRunning", true);
+                acceleration += acceleration * Time.deltaTime;
+                if (acceleration > 20)
+                {
+                    acceleration = 20;
+                    animator.SetBool("isRunning", true);
 
+                }
+            }
+            else
+            {
+                acceleration = orginalAceleration;
+                animator.SetBool("isRunning", false);
             }
             animator.SetBool(nameof(isMovingRight), true);
         }
@@ -174,8 +197,7 @@ public class AnimationAndMovementController : MonoBehaviour
         }
         if (isMoving == true)
         {
-            Vector3 direction = new Vector3(0, 0f, 1).normalized;
-            transform.rotation = Quaternion.LookRotation(direction);
+
             acceleration += acceleration * Time.deltaTime;
             if(acceleration > 20)
             {
