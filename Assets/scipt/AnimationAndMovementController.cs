@@ -14,6 +14,7 @@ public class AnimationAndMovementController : MonoBehaviour
     public Transform model;
     Vector2 currentMovementInput;
     Vector3 currentMovement;
+    bool isRunning;
     bool isMovementPressed;
     bool isMoving;
     bool isMovingBackward;
@@ -21,26 +22,29 @@ public class AnimationAndMovementController : MonoBehaviour
     bool isMovingLeft;
     bool isJumping;
     bool flag = false;
+    bool flagstandup = true;
     bool fallflag = false;
     bool forward=false;
     bool backward=false;
+    bool isGrounded;
+   
 
 
-    
-    public float speed = 6;
+    public float speed = 10f;
     public float gravity = -9.81f;
     public float jumpHeight = 3;
     Vector3 velocity;
-    bool isGrounded;
+    
     public Transform groundCheck;
     public float groundDistance = 1;
     public LayerMask groundMask;
 
-    public float acceleration = 10f;
+    public float orginalAceleration = 2f;
+    public float acceleration = 0.1f;
     public float currentReach;
     public GameManager gameManager;
     public float dragFactor = 5f;
-    bool flagstandup = true;
+    
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         ostacle = hit.collider.gameObject;
@@ -48,21 +52,23 @@ public class AnimationAndMovementController : MonoBehaviour
         {
             if (hit.collider.gameObject.tag == "forward")
             {
+                acceleration = orginalAceleration;
                 forward = true;
                 Vector3 direction = new Vector3(currentMovementInput.x, 0f, currentMovementInput.y).normalized;
                 transform.rotation = Quaternion.LookRotation(direction);
                 handleAnimation();
-
+                
                 Debug.Log("forward");
             }
             if (hit.collider.gameObject.tag == "back")
             {
+                acceleration = orginalAceleration;
                 backward = true;
                 Vector3 direction = new Vector3(currentMovementInput.x, 0f, currentMovementInput.y).normalized;
                 transform.rotation = Quaternion.LookRotation(direction);
                 Debug.Log("backward");
             }
-            Debug.Log(flagstandup);
+            //Debug.Log(flagstandup);
             
         }
 
@@ -81,7 +87,7 @@ public class AnimationAndMovementController : MonoBehaviour
     }
     void onMovementInput (InputAction.CallbackContext context)
     {
-        
+       
         currentMovementInput = context.ReadValue<Vector2>();
         currentMovement.z = -currentMovementInput.x;
         currentMovement.x = currentMovementInput.y;
@@ -96,6 +102,7 @@ public class AnimationAndMovementController : MonoBehaviour
         isMoving = currentMovementInput.y > 0;
         if (isMovementPressed)
         {
+            
             animator.SetBool("isPressing", true);
             flagstandup = true;
             Debug.Log("Press");
@@ -104,10 +111,14 @@ public class AnimationAndMovementController : MonoBehaviour
         }
         else
         {
+            animator.SetBool("isRunning", false);
+            acceleration = orginalAceleration;
             animator.SetBool("isPressing", false);
         }
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("falling_backward") && !animator.GetCurrentAnimatorStateInfo(0).IsName("falling_forward"))
         {
+            flagstandup = true;
+            acceleration = orginalAceleration;
             Vector3 direction = new Vector3(0, 0f, 1).normalized;
             transform.rotation = Quaternion.LookRotation(direction);
         }
@@ -146,6 +157,13 @@ public class AnimationAndMovementController : MonoBehaviour
         }
         if (isMoving == true)
         {
+            acceleration += acceleration * Time.deltaTime;
+            if(acceleration > 20)
+            {
+                acceleration = 20;
+                animator.SetBool("isRunning", true);
+                
+            }
             animator.SetBool(nameof(isMoving), true);
             animator.SetBool(nameof(isMovingRight), false);
             animator.SetBool(nameof(isMovingLeft), false);
@@ -159,6 +177,7 @@ public class AnimationAndMovementController : MonoBehaviour
             animator.SetBool(nameof(isMovingBackward), true);
             animator.SetBool(nameof(isMovingRight), false);
             animator.SetBool(nameof(isMovingLeft), false);
+
         }
         if (isMovingBackward == false)
         {
@@ -245,7 +264,8 @@ public class AnimationAndMovementController : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime*acceleration );
         
 
-        characterController.Move(currentMovement*Time.deltaTime*10f);
+        characterController.Move(currentMovement*Time.deltaTime*(speed+acceleration));
+        Debug.Log(acceleration);
 
         //transform.Rotate(Vector3.up, 20 * Time.deltaTime);
     }
