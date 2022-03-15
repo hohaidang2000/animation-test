@@ -56,6 +56,7 @@ public class AnimationAndMovementController : MonoBehaviour
                 forward = true;
                 Vector3 direction = new Vector3(currentMovementInput.x, 0f, currentMovementInput.y).normalized;
                 transform.rotation = Quaternion.LookRotation(direction);
+                animator.SetBool("isPressing", false);
                 handleAnimation();
                 
                 Debug.Log("forward");
@@ -66,6 +67,8 @@ public class AnimationAndMovementController : MonoBehaviour
                 backward = true;
                 Vector3 direction = new Vector3(currentMovementInput.x, 0f, currentMovementInput.y).normalized;
                 transform.rotation = Quaternion.LookRotation(direction);
+                animator.SetBool("isPressing", false);
+                handleAnimation();
                 Debug.Log("backward");
             }
             //Debug.Log(flagstandup);
@@ -102,7 +105,7 @@ public class AnimationAndMovementController : MonoBehaviour
         isMoving = currentMovementInput.y > 0;
         if (isMovementPressed)
         {
-            
+
             animator.SetBool("isPressing", true);
             flagstandup = true;
             Debug.Log("Press");
@@ -115,7 +118,8 @@ public class AnimationAndMovementController : MonoBehaviour
             acceleration = orginalAceleration;
             animator.SetBool("isPressing", false);
         }
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("falling_backward") && !animator.GetCurrentAnimatorStateInfo(0).IsName("falling_forward"))
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("falling_backward") == false && animator.GetCurrentAnimatorStateInfo(0).IsName("falling_forward") == false)
         {
             flagstandup = true;
             acceleration = orginalAceleration;
@@ -207,7 +211,7 @@ public class AnimationAndMovementController : MonoBehaviour
             backward = false;
             flagstandup = false;
             animator.Play("falling_backward");
-            animator.Play("standingup");
+            //animator.Play("standingup");
             //fallflag = true;
         }
         if (forward == true )
@@ -216,7 +220,7 @@ public class AnimationAndMovementController : MonoBehaviour
             forward = false;
             flagstandup = false;
             animator.Play("falling_forward");
-            animator.Play("standingup");
+            //animator.Play("standingup");
             //fallflag = true;
         }
         forward = false;
