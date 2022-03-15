@@ -2,11 +2,12 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - AnimationAndMovementController
+    - CameraFollow
     - GameManager
+    - GameOverScreen
+    - MainMenu
+    - OnOff
     - SpawnSequence
-    - gameoverscreen
-    - mainmenu
-    - onoff
     Unity.InputSystem.dll:
     - UnityEngine.InputSystem.InputActionAsset
     - UnityEngine.InputSystem.InputActionReference
@@ -84,37 +85,39 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1548}
+      Script: {instanceID: 1574}
     - Class: 114
-      Script: {instanceID: 1710}
+      Script: {instanceID: 1736}
     - Class: 114
-      Script: {instanceID: 1876}
+      Script: {instanceID: 1902}
     - Class: 114
-      Script: {instanceID: 2674}
+      Script: {instanceID: 2700}
     - Class: 114
-      Script: {instanceID: 2838}
+      Script: {instanceID: 2864}
     - Class: 114
-      Script: {instanceID: 2890}
+      Script: {instanceID: 2916}
     - Class: 114
-      Script: {instanceID: 3064}
+      Script: {instanceID: 3090}
     - Class: 114
-      Script: {instanceID: 3462}
+      Script: {instanceID: 3488}
     - Class: 114
-      Script: {instanceID: 3826}
+      Script: {instanceID: 3854}
     - Class: 114
-      Script: {instanceID: 4308}
+      Script: {instanceID: 4336}
     - Class: 114
-      Script: {instanceID: 4744}
+      Script: {instanceID: 4774}
     - Class: 114
-      Script: {instanceID: 5238}
+      Script: {instanceID: 5268}
     - Class: 114
-      Script: {instanceID: 5736}
+      Script: {instanceID: 5400}
     - Class: 114
-      Script: {instanceID: 31030}
+      Script: {instanceID: 5426}
     - Class: 114
-      Script: {instanceID: 31038}
+      Script: {instanceID: 5770}
     - Class: 114
-      Script: {instanceID: 31048}
+      Script: {instanceID: 18916}
+    - Class: 114
+      Script: {instanceID: 29374}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -139,7 +142,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
-    Assets/Scenes/ui.unity:
+    Assets/Scenes/UI.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -163,35 +166,35 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1548}
+      Script: {instanceID: 1574}
     - Class: 114
-      Script: {instanceID: 1876}
+      Script: {instanceID: 1902}
     - Class: 114
-      Script: {instanceID: 2262}
+      Script: {instanceID: 2288}
     - Class: 114
-      Script: {instanceID: 2674}
+      Script: {instanceID: 2700}
     - Class: 114
-      Script: {instanceID: 2838}
+      Script: {instanceID: 2864}
     - Class: 114
-      Script: {instanceID: 2890}
+      Script: {instanceID: 2916}
     - Class: 114
-      Script: {instanceID: 3064}
+      Script: {instanceID: 3090}
     - Class: 114
-      Script: {instanceID: 3462}
+      Script: {instanceID: 3488}
     - Class: 114
-      Script: {instanceID: 3826}
+      Script: {instanceID: 3562}
     - Class: 114
-      Script: {instanceID: 4308}
+      Script: {instanceID: 3854}
     - Class: 114
-      Script: {instanceID: 4744}
+      Script: {instanceID: 4336}
     - Class: 114
-      Script: {instanceID: 4912}
+      Script: {instanceID: 4664}
     - Class: 114
-      Script: {instanceID: 5270}
+      Script: {instanceID: 4774}
     - Class: 114
-      Script: {instanceID: 31034}
+      Script: {instanceID: 4942}
     - Class: 114
-      Script: {instanceID: 31052}
+      Script: {instanceID: 5300}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -529,6 +532,12 @@ ScriptsOnlyBuild:
     className: PlayerInputEditor
   - hash:
       serializedVersion: 2
+      Hash: 09ece21c30b7839b440d630bb2aace9e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OnOff
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.InputSystem.dll
     namespaceName: UnityEngine.InputSystem.UI.Editor
@@ -709,6 +718,12 @@ ScriptsOnlyBuild:
     className: InputDebuggerWindow
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainMenu
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -799,7 +814,7 @@ ScriptsOnlyBuild:
     className: OnScreenStick
   - hash:
       serializedVersion: 2
-      Hash: 6f48b9d5b706e564a5367158c4872d96
+      Hash: 25241b454182d5d4f8adb09ff4b6d891
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AnimationAndMovementController
@@ -815,6 +830,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameOverScreen
+  - hash:
+      serializedVersion: 2
+      Hash: 083b017aa49a38cd02eef662a618c121
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameManager
   - hash:
       serializedVersion: 2
       Hash: 285f5d7c369d870b93f4a2cbcec118e4
@@ -871,30 +898,18 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 967362e9e76edb7c18948ed05b4facfa
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: GameManager
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: mainmenu
+    className: ModelTurning
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 83e769eee07fc231384c812eedbb8224
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: gameoverscreen
-  - hash:
-      serializedVersion: 2
-      Hash: 09ece21c30b7839b440d630bb2aace9e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: onoff
+    className: CameraFollow
   platform: 19
   scenePathNames:
-  - Assets/Scenes/ui.unity
+  - Assets/Scenes/UI.unity
   - Assets/Scenes/SampleScene.unity
   playerPath: D:/unityproject/animation test/exe/animation test.exe
